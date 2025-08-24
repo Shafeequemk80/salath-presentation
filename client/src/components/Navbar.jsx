@@ -17,7 +17,7 @@ export default function Navbar() {
           {user ? (
             <>
               <NavLink to="/dashboard" className={({isActive})=>isActive? 'text-primary-900 font-semibold':'text-primary-700'}>Dashboard</NavLink>
-              <button className="btn !px-3 !py-1.5" onClick={()=>{logout(); navigate('/');}}>Logout</button>
+              <button className="btn !px-3 !py-1.5" onClick={()=>{logout(); navigate('/login');}}>Logout</button>
             </>
           ) : (
             <>
