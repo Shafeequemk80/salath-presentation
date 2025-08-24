@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reusable UI bits */
+.btn { @apply inline-flex items-center justify-center px-4 py-2 rounded-xl font-medium shadow-sm bg-primary-600 text-white hover:bg-primary-700 transition; }
+.input { @apply w-full px-4 py-2 rounded-xl border border-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-400 bg-white; }
+.card { @apply bg-white rounded-2xl shadow-md p-5; }
+.link { @apply text-primary-700 hover:text-primary-900 underline; }
