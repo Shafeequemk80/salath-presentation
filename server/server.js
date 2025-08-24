@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 import cors from 'cors';
-import { PORT, MONGODB_URI, CLIENT_ORIGIN } from './config.js';
+import { PORT, MONGODB_URI } from './config.js';
 
 import authRoutes from './routes/auth.js';
 import countsRoutes from './routes/counts.js';
@@ -11,7 +11,7 @@ import adminRoutes from './routes/admin.js';
 const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
+app.use(cors());
 
 app.get('/', (_req, res) => res.json({ status: 'ok' }));
 
