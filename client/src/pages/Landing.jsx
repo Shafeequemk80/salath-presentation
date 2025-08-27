@@ -3,6 +3,7 @@ import Card from '../components/Card.jsx';
 import { api } from '../api.js';
 import { Link } from 'react-router-dom';
 import { Trophy, Medal, LogIn, UserPlus } from "lucide-react";
+import Footer from '../components/Footer.jsx';
 
 export default function Landing() {
   const [leaders, setLeaders] = useState([]);
@@ -26,6 +27,7 @@ export default function Landing() {
   }, []);
 
   return (
+     <>
     <main className="max-w-4xl mx-auto px-4 py-10 text-center">
       
       {/* Title */}
@@ -115,5 +117,9 @@ export default function Landing() {
         </Card>
       </section>
     </main>
+      <Footer />  
+  </>
   );
+ 
+  
 }
