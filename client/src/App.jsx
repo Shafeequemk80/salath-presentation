@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import AdminLogin from './pages/AdminLogin.jsx';
 import AdminPanel from './pages/AdminPanel.jsx';
 import './styles.css';
+import AdminDashboard from './pages/adminDashBoard.jsx';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/panel" element={<AdminPanel />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

@@ -35,4 +35,83 @@ router.get('/users/:userId/counts', async (req, res) => {
 
 
 
+
+router.get("/dashboard", async (req, res) => {
+  try {
+    // 1. Total amount of all users
+    const totalAmountAgg = await Count.aggregate([
+      { $group: { _id: null, total: { $sum: "$value" } } }
+    ]);
+    const totalAmount = totalAmountAgg.length > 0 ? totalAmountAgg[0].total : 0;
+
+    // 2. Top 4 users with total counts
+    const topUsers = await Count.aggregate([
+      { $group: { _id: "$user", total: { $sum: "$value" } } },
+      { $sort: { total: -1 } },
+      { $limit: 4 },
+      {
+        $lookup: {
+          from: "users",
+          localField: "_id",
+          foreignField: "_id",
+          as: "userDetails"
+        }
+      },
+      { $unwind: "$userDetails" },
+      {
+        $project: {
+          _id: 0,
+          userId: "$userDetails._id",
+          name: "$userDetails.name",
+          phone: "$userDetails.phone",
+          total: 1
+        }
+      }
+    ]);
+
+    // 3. Analytics graph (daily totals)
+    const graphData = await Count.aggregate([
+      { $group: { _id: "$date", total: { $sum: "$value" } } },
+      { $sort: { _id: 1 } }
+    ]);
+
+    // 4. All users with their total counts
+    const allUsers = await Count.aggregate([
+      { $group: { _id: "$user", total: { $sum: "$value" } } },
+      {
+        $lookup: {
+          from: "users",
+          localField: "_id",
+          foreignField: "_id",
+          as: "userDetails"
+        }
+      },
+      { $unwind: "$userDetails" },
+      {
+        $project: {
+          _id: 0,
+          userId: "$userDetails._id",
+          name: "$userDetails.name",
+          phone: "$userDetails.phone",
+          address: "$userDetails.address",
+          total: 1
+        }
+      },
+      { $sort: { total: -1 } }
+    ]);
+
+    res.json({
+      totalAmount,
+      topUsers,
+      graphData,
+      allUsers
+    });
+  } catch (err) {
+    console.error("Dashboard fetch error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+
 export default router;
