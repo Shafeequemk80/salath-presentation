@@ -10,6 +10,7 @@ import AdminPanel from './pages/AdminPanel.jsx';
 import AdminDashboard from './pages/AdminDashBoard.jsx'
 
 import './styles.css';
+import SalathEndMessage from './pages/SalathEndMessage.jsx';
 
 
 export default function App() {
@@ -18,10 +19,10 @@ export default function App() {
       <AuthProvider>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<SalathEndMessage />} />
+          <Route path="/login" element={<SalathEndMessage />} />
+          <Route path="/signup" element={<SalathEndMessage />} />
+          <Route path="/dashboard" element={<SalathEndMessage />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/panel" element={<AdminPanel />} />
           <Route path="/admin/dashboard" element={<AdminDashboard/>} />
