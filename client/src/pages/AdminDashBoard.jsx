@@ -3,6 +3,8 @@ import { api } from "../api";
 import AnalyticsCard from "./AnalyticsCard";
 
 function AdminDashboard() {
+    useEffect(() => { if (!isAdmin) navigate('/admin'); }, []);
+
   const [totalAmount, setTotalAmount] = useState(0);
   const [topUsers, setTopUsers] = useState([]);
   const [chartData, setChartData] = useState([]);

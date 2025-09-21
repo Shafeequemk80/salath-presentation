@@ -28,7 +28,7 @@ export default function Signup() {
     }
   };
 
-  const removeSpaces = (value) => value.replace(/\s+/g, "");
+ // const removeSpaces = (value) => value.replace(/\s+/g, "");
 
   const submit = async (e) => {
     e.preventDefault();
@@ -62,7 +62,7 @@ export default function Signup() {
             className="input"
             value={form.name}
             onChange={(e) =>
-              setForm({ ...form, name: removeSpaces(e.target.value) })
+              setForm({ ...form, name: e.target.value })
             }
             placeholder="Enter your name"
             required
