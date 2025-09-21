@@ -6,7 +6,7 @@ import { useNavigate, Link } from 'react-router-dom';
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ name: '', phone: '' });
+  const [form, setForm] = useState({  phone: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -26,10 +26,7 @@ export default function Login() {
       <h1 className="text-3xl font-bold text-primary-900 mb-4">Welcome back</h1>
       <form onSubmit={submit} className="card space-y-4">
         {error && <div className="text-red-600">{error}</div>}
-        <div>
-          <label className="block text-sm text-primary-800 mb-1">Name</label>
-          <input className="input" value={form.name} onChange={e=>setForm({...form, name:e.target.value})} required />
-        </div>
+       
         <div>
           <label className="block text-sm text-primary-800 mb-1">Phone</label>
           <input className="input" value={form.phone} onChange={e=>setForm({...form, phone:e.target.value})} required />

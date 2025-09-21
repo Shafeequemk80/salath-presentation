@@ -10,7 +10,7 @@ export default function Navbar() {
       <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <div className="w-9 h-9 rounded-xl bg-primary-600 text-white grid place-items-center font-bold">SP</div>
-          <span className="font-bold text-primary-900">Salat Presentation</span>
+          <span className="font-bold text-2xl text-primary-900">Salat App</span>
         </Link>
         <nav className="flex items-center gap-4">
           <NavLink to="/" className={({isActive})=>isActive? 'text-primary-900 font-semibold':'text-primary-700'}>Home</NavLink>

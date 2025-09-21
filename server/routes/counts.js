@@ -21,7 +21,7 @@ router.post('/me/today', auth, async (req, res) => {
     const date = todayKey();
     const doc = await Count.findOneAndUpdate(
       { user: req.user.id, date },
-      { $set: { value } },
+      { $inc: { value } },
       { upsert: true, new: true }
     );
     res.json(doc);
